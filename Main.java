@@ -71,13 +71,25 @@ public class Main {
   }
 
   private static void searchEmployee(Stack<Employee> employeeStack) {
-    if (!employeeStack.isEmpty()) {
-      Employee topEmployee = employeeStack.peek();
-      System.out.println("Top employee: " + topEmployee);
-    } else {
-      System.out.println("No employee found. Stack is empty.");
+    if(!employeeStack.isEmpty()){
+      System.out.print("Enter employee's Full Name or Number to Search: ");
+      String searchKey = scanner.nextLine();
+      boolean found = false;
+
+      for(Employee employee : employeeStack){
+        if(employee.getFullName().equalsIgnoreCase(searchKey) || employee.getEmpNumber().equalsIgnoreCase(searchKey)){
+          System.out.println("Employee Found: " + employee);
+          found = true;
+          break;
+        }
+      }
+      if(!found){
+        System.out.println("Employee not found.");
+      }
+      else{
+        System.out.println("No Employee found. Stack is Empty");
+      }
     }
-  }
 }
 
 class Employee {
